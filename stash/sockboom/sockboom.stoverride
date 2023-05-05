@@ -1,0 +1,14 @@
+name: Sockboom Tile
+desc: show sockboom info & checkin
+
+tiles:
+  - name: Sockboom
+    title: 'Sockboom'
+    backgroundColor: '#009944'
+    icon: 'airplane.departure'
+    interval: 3600
+
+script-providers:
+  Sockboom:
+    url: https://raw.githubusercontent.com/r4ntix/pouch/main/stash/sockboom/sockboom.js
+    interval: 86400

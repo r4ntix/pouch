@@ -41,14 +41,13 @@ function getTrafficInfo() {
       }
 
       // gen content
+      const { money, days } = respData.data;
       const userType = userLevel[respData.data.class];
-      const { money } = respData.data;
       const usedToday = bitsToSize(respData.data.used_today);
       const usedTotal = bitsToSize(respData.data.used_total);
       const unused = bitsToSize(respData.data.unused);
-      const { days } = respData.data;
 
-      resolve(`User: ${userType}, Money: ${money} ¥\nUsage: ${usedToday}, ${usedTotal}\nRemaining: ${unused}, ${days} days`);
+      resolve(`User: ${userType}, Money: ${money} ¥\nUsage: ${usedToday} | ${usedTotal}\nRemaining: ${unused} | ${days} days`);
     });
   }).catch((error) => console.log(error));
 }
@@ -73,15 +72,15 @@ function checkin() {
 
       // already checked in
       if (respData.success === 0) {
-        resolve($persistentStore.read('sockboom_checkin_msg') || `Last check in time: ${checkInTime}`);
+        resolve(`Last check in: ${checkInTime} | ${$persistentStore.read('sockboom_checkin_traffic')}`);
         return;
       }
 
       // gen content
       const traffic = bitsToSize(respData.traffic);
-      const content = `Today check in: ${checkInTime}, Traffic: ${traffic}`;
+      const content = `Last check in: ${checkInTime} | ${traffic}`;
 
-      $persistentStore.write(content, 'sockboom_checkin_msg');
+      $persistentStore.write(traffic, 'sockboom_checkin_traffic');
       resolve(content);
     });
   }).catch((error) => console.log(error));

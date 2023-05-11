@@ -72,13 +72,13 @@ function checkin() {
 
       // already checked in
       if (respData.success === 0) {
-        resolve(`Last check in: ${checkInTime} | ${$persistentStore.read('sockboom_checkin_traffic')}`);
+        resolve(`Check in: ${checkInTime} | ${$persistentStore.read('sockboom_checkin_traffic')}`);
         return;
       }
 
       // gen content
       const traffic = bitsToSize(respData.traffic);
-      const content = `Last check in: ${checkInTime} | ${traffic}`;
+      const content = `Check in: ${checkInTime} | ${traffic}`;
 
       $persistentStore.write(traffic, 'sockboom_checkin_traffic');
       resolve(content);

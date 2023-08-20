@@ -1,5 +1,8 @@
 name: Sockboom Tile
 desc: show sockboom info & checkin
+author: r.4ntix
+homepage: https://github.com/r4ntix/pouch/tree/main/stash/sockboom
+manual: https://github.com/r4ntix/pouch/blob/main/stash/sockboom/README.md
 
 tiles:
   - name: Sockboom

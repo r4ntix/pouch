@@ -47,7 +47,7 @@ function getTrafficInfo() {
       const usedTotal = bitsToSize(respData.data.used_total);
       const unused = bitsToSize(respData.data.unused);
 
-      resolve(`User: ${userType} | ${money} ¥\nUsage: ${usedToday} | ${usedTotal}\nCredit: ${unused} | ${days} days`);
+      resolve(`User: ${userType} | ${money} ¥\nUsage: ${usedToday} | ${usedTotal}\nCredit: ${unused} | ${days.toFixed(2)} days`);
     });
   }).catch((error) => console.log(error));
 }
